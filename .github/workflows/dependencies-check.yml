@@ -1,6 +1,6 @@
 name: dependencies check
 on:
-    workflow_call:
+    workflow_dispatch:
 
 jobs:
     dependencies-check:
