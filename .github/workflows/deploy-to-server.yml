@@ -15,7 +15,8 @@ jobs:
                     key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
                     script: |
                      echo " Project will work"
-                     mkdir -p Devops
+                     mkdir -p Devops && sudo apt-get install docker.io docker-compose-v2 -y
+                     sudo chmod -aG docker $USER && newgrp docker
 
              - name: copy the docker compose file
                uses: appleboy/scp-action@v1
@@ -34,8 +35,7 @@ jobs:
                     key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
                     script: |
                      cd ~/devops
-                     sudo apt-get install docker.io docker-compose-v2 -y
-                     sudo chmod -aG docker $USER && newgrp docker
+                     
                      docker compose down && docker compose up -d --build --force-recreate -pull always
 
 
