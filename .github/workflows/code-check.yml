@@ -1,9 +1,7 @@
 name: code check
 
 on:
- push:
-  branches:
-      - main
+ workflow_dispatch: 
 jobs:
   checking:
    runs-on: ubuntu-latest
