@@ -1,0 +1,21 @@
+name: code check
+
+on:
+ push:
+  branches:
+      - main
+jobs:
+  checking:
+   runs-on: ubuntu-latest
+   steps:
+    - name: checkout code
+      uses: actions/checkout@v4
+    - name: setup python 3.12
+      uses: actions/setup-python@v6
+      with:
+        python-version: "3.12"
+    - name: Install linter
+      uses: super-linter/super-linter@v8.5.0
+    - name: SAST run
+      run: bandit -r app.py
+      
