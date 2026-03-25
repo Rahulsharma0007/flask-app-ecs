@@ -18,6 +18,8 @@ jobs:
       run: pip install flake8
     - name: run linter
       run: flake8 app.py
+    - name: Install SAST
+      run: pip install bandit
     - name: SAST run
       run: bandit -r app.py
       
