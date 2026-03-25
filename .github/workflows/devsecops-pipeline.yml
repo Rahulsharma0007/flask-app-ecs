@@ -2,6 +2,7 @@ name: devsecops
 
 on:
     workflow_dispatch:
+
 jobs:
     code-quality:
            uses: ./.github/workflows/code-check.yml
@@ -23,8 +24,5 @@ jobs:
            uses: ./.github/workflows/image-scan.yml 
            secrets: inherit
            
-    deploy-to-server:
-           needs: [image-scan]
-           uses: ./.github/workflows/deploy-to-server.yml
-           secrets: inherit
+    
 
