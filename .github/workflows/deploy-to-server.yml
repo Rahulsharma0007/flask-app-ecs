@@ -18,6 +18,9 @@ jobs:
                      mkdir -p Devops && sudo apt update && sudo apt-get install docker.io docker-compose-v2 -y
                      sudo usermod -aG docker $USER && newgrp docker
 
+             - name: checkout code
+               uses: actions/checkout@v4
+
              - name: copy the docker compose file
                uses: appleboy/scp-action@v1
                with:
@@ -26,6 +29,7 @@ jobs:
                    key: ${{ secrets.EC2_SSH_PRIVATE_KEY }}
                    source: dockercompose.yml
                    target: ~/Devops
+
 
              - name: Remote SSH ad run the app
                uses: appleboy/ssh-action@v1.0.3
