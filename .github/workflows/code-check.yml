@@ -15,7 +15,9 @@ jobs:
       with:
         python-version: "3.12"
     - name: Install linter
-      uses: super-linter/super-linter@v8.5.0
+      uses: pip install flake8
+    - name: run linter
+      uses: flake8 app.py
     - name: SAST run
       run: bandit -r app.py
       
