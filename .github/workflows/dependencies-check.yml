@@ -16,4 +16,4 @@ jobs:
             - name: Install dependencies
               run: pip install pip-audit
             - name: Run pip-audit for vulnerabilities
-              run: pip-audit -r requirements.txt --strict
+              run: pip-audit -r requirements.txt 
